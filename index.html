@@ -11,18 +11,19 @@
 <style>
     body {
         display: flex;
+        flex-direction: column;
         height: 100vh;
         width: 100vw;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
+        overflow-x: hidden;
     }
 
     #clockContainer {
         position: relative;
         margin: auto;
-        height: 40vw;
-        width: 40vw;
+        height: 30vw;
+        width: 30vw;
         background: url(clock.png) no-repeat;
         background-size: 100%;
     }
@@ -76,14 +77,24 @@
 </style>
 
 <body>
+    <h1>Analog Clock</h1>
     <div id="clockContainer">
         <div id="hour"></div>
         <div id="minute"></div>
         <div id="second"></div>
     </div>
+
+    <h1>Digital Clock</h1>
+    <div id="digitalClock">
+        <div id="display">
+
+        </div>
+    </div>
+
     <script>
 
-
+        // Analog Clock Code
+        
         setInterval(() => {
             d = new Date();
             hr = d.getHours();
@@ -97,6 +108,17 @@
             minute.style.transform = `rotate(${mrotation}deg)`;
             hour.style.transform = `rotate(${hrotation}deg)`;
         }, 1000);
+
+
+        // Digital Clock Code
+        
+        setInterval(() => {
+            const time = new Date().toLocaleTimeString();
+            display.innerHTML = time;
+        }, 1000);
+
+
+
     </script>
 </body>
 
