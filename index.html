@@ -9,15 +9,38 @@
     <!-- <script src="index.js" defer></script> -->
 </head>
 <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        text-align: center;
+    }
+
     body {
         display: flex;
-        flex-direction: column;
         height: 100vh;
         width: 100vw;
-        justify-content: center;
-        align-items: center;
-        overflow-x: hidden;
+        justify-content: space-around;
+        align-items: stretch;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        flex-wrap: wrap;
     }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        width: 50%;
+        position: relative;
+    }
+
+    /* @media only screen and (max-width: 767px){
+        body{
+            flex-direction: column;
+        }
+    } */
 
     #clockContainer {
         position: relative;
@@ -74,27 +97,37 @@
         opacity: 0.8;
 
     }
+
+    #display {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+    }
 </style>
 
 <body>
-    <h1>Analog Clock</h1>
-    <div id="clockContainer">
-        <div id="hour"></div>
-        <div id="minute"></div>
-        <div id="second"></div>
-    </div>
-
-    <h1>Digital Clock</h1>
-    <div id="digitalClock">
-        <div id="display">
-
+    <div class="column">
+        <h1>Analog Clock</h1>
+        <div id="clockContainer">
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
         </div>
     </div>
+    <div class="column">
+        <h1>Digital Clock</h1>
+        <div id="digitalClock">
+            <div id="display"></div>
+        </div>
+    </div>
+
 
     <script>
 
         // Analog Clock Code
-        
+
         setInterval(() => {
             d = new Date();
             hr = d.getHours();
@@ -111,7 +144,7 @@
 
 
         // Digital Clock Code
-        
+
         setInterval(() => {
             const time = new Date().toLocaleTimeString();
             display.innerHTML = time;
